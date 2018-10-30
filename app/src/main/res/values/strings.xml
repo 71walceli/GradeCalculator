@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">GradeCalculator</string>
+    <string name="q1p1">Q1, P1</string>
+    <string name="q1p2">Q1, P2</string>
+    <string name="q1p3">Q1.P3</string>
+    <string name="ex1">Ex. 1</string>
+    <string name="q2p1">Q2, P1</string>
+    <string name="q2p2">Q2, P2</string>
+    <string name="q2p3">Q2, P3</string>
+    <string name="ex2">Ex. 2</string>
+    <string name="ShowErr">Input errors will show here</string>
+    <string name="getAnnualGrade">Grade</string>
+    <string name="NotValidGrade">%1$s is not a valid grade.</string>
+    <string name="NotValidGrades">%1$s are not valid grades.</string>
+</resources>
