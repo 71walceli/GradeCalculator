@@ -19,20 +19,13 @@ public class MainActivity extends AppCompatActivity {
     private TextView EX2;
     private TextView A;
 
-    private float q1p1;
-    private float q1p2;
-    private float q1p3;
-    private float ex1;
-    private float q2p1;
-    private float q2p2;
-    private float q2p3;
-    private float ex2;
-    private float a;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Q1P1 = findViewById(R.id.Q1P1);
         Q1P2 = findViewById(R.id.Q1P2);
         Q1P3 = findViewById(R.id.Q1P3);
@@ -45,28 +38,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button(View view) {
-        try {
-            getN();
-            if(chkN()) {
-                a = setAGrade(q1p1, q1p2, q1p3, q2p1, q2p2, q2p3, ex1, ex2);
-                A.setText(String.format(Locale.getDefault(),"%f", a));
-            }
-        } catch (Exception e) {
-            findViewById(R.id.ShowErr).setVisibility(View.VISIBLE);
-            ((TextView)findViewById(R.id.ShowErr)).setText(Log.getStackTraceString(e));
-            Log.e(getString(R.string.app_name), Log.getStackTraceString(e));
-        }
-    }
+        if(getGradesFromFields()) {
+            a = setAGrade(q1p1, q1p2, q1p3, q2p1, q2p2, q2p3, ex1, ex2);
+            A.setText(String.format(Locale.getDefault(),"%f", a));
+        } else {
 
-    private void getN() {
-        q1p1 = setG(Float.parseFloat(Q1P1.getText().toString()));
-        q1p2 = setG(Float.parseFloat(Q1P2.getText().toString()));
-        q1p3 = setG(Float.parseFloat(Q1P3.getText().toString()));
-        q2p1 = setG(Float.parseFloat(Q2P1.getText().toString()));
-        q2p2 = setG(Float.parseFloat(Q2P2.getText().toString()));
-        q2p3 = setG(Float.parseFloat(Q2P3.getText().toString()));
-        ex1 = setG(Float.parseFloat(EX1.getText().toString()));
-        ex2 = setG(Float.parseFloat(EX2.getText().toString()));
+        }
+
     }
 
     public float setG(float n) {
@@ -81,32 +59,27 @@ public class MainActivity extends AppCompatActivity {
         return (float) (( q_1+q_2+q_3 )/ 3 * .8 + ex*.2 );
     }
 
-    public  boolean chkN() {
-        int len = -1;
-        float[] n = {q1p1, q1p2, q1p3, q2p1, q2p2, q2p3, ex1, ex2};
-        TextView[] N = {Q1P1, Q1P2, Q1P3, Q2P1, Q2P2, Q2P3, EX1, EX2};
-        float[] en = new float[8];
-        for(int i = 0; i <= 7; i++) {
-            if (!(n[i] >= 1 && n[i] <= 10) || N[i].getText().toString() == "") {
-                len++;
-                en[len] = Float.parseFloat(N[i].getText().toString());
-                N[i].setText(null);
-            }
-        }
-        if(len == -1) {
-            (findViewById(R.id.ShowErr)).setVisibility(View.INVISIBLE);
+    public  boolean getGradesFromFields() {
+        try {
+            q1p1 = setG(Float.parseFloat(Q1P1.getText().toString()));
+            q1p2 = setG(Float.parseFloat(Q1P2.getText().toString()));
+            q1p3 = setG(Float.parseFloat(Q1P3.getText().toString()));
+            q2p1 = setG(Float.parseFloat(Q2P1.getText().toString()));
+            q2p2 = setG(Float.parseFloat(Q2P2.getText().toString()));
+            q2p3 = setG(Float.parseFloat(Q2P3.getText().toString()));
+            ex1 = setG(Float.parseFloat(EX1.getText().toString()));
+            ex2 = setG(Float.parseFloat(EX2.getText().toString()));
             return true;
+        } catch (NumberFormatException e) {
+            reportError(e);
         }
-        else {
-            (findViewById(R.id.ShowErr)).setVisibility(View.VISIBLE);
-            if(len == 0) {
-                ((TextView)findViewById(R.id.ShowErr)).setText(getString(R.string.NotValidGrade, stringJoiner(en, ", ")));
-            }
-            else {
-                ((TextView)findViewById(R.id.ShowErr)).setText(getString(R.string.NotValidGrades, stringJoiner(en, ", ")));
-            }
-            return false;
-        }
+        return false;
+    }
+
+    private void reportError(NumberFormatException e) {
+        findViewById(R.id.ShowErr).setVisibility(View.VISIBLE);
+        ((TextView)findViewById(R.id.ShowErr)).setText(Log.getStackTraceString(e));
+        Log.e(getString(R.string.app_name), Log.getStackTraceString(e));
     }
 
     public static String stringJoiner(float[] arr, String sep) {

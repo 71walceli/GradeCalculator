@@ -1,0 +1,12 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation files('libs/commons-lang3-3.8.1-javadoc.jar')
+    implementation files('libs/commons-lang3-3.8.1-sources.jar')
+    implementation files('libs/commons-lang3-3.8.1-test-sources.jar')
+    implementation files('libs/commons-lang3-3.8.1-tests.jar')
+    implementation files('libs/commons-lang3-3.8.1.jar')
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
