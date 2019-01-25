@@ -14,6 +14,11 @@ public class Grade {
         this.name = name;
         this.setGrade(grade);
     }
+    static Grade[] massGrades(float[] grades) {
+        Grade[] newGrades = new Grade[grades.length];
+        for (int i = 0; i < grades.length; i++) newGrades[i] = new Grade(grades[i]);
+        return newGrades;
+    }
 
     public float getGrade() {
         return grade;
