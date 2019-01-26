@@ -1,7 +1,7 @@
 package pro.pk.a.javatest;
 
 public class SemmesterGrade extends GradeSet {
-    private static final String[] gradeNames = new String[]{"p1", "p2", "p3", "exam"};
+    private static final String[] partialNames = new String[]{"p1", "p2", "p3", "exam"};
     private PartialGrade[] partialGrades = new PartialGrade[3];
 
     SemmesterGrade(float[] grades) {
@@ -17,12 +17,13 @@ public class SemmesterGrade extends GradeSet {
         this(name, new GradeSet(name, new Grade[]{partialGrades[0].getAverage(), partialGrades[1].getAverage(), partialGrades[2].getAverage(), test}));
         for (int i = 0; i < this.getPartialGrades().length; i++) {
             this.getPartialGrades()[i] = partialGrades[i];
+            this.getPartialGrades()[i].setName(partialNames[i]);
         }
     }
     SemmesterGrade(String name, GradeSet gradeSet) {
         super(name, new Grade[]{gradeSet.getGradeSet()[0], gradeSet.getGradeSet()[1], gradeSet.getGradeSet()[2], gradeSet.getGradeSet()[3]});
         for (int i = 0; i < gradeSet.getGradeSet().length; i++) {
-            gradeSet.getGradeSet()[i].setName(gradeNames[i]);
+            gradeSet.getGradeSet()[i].setName(partialNames[i]);
         }
     }
 

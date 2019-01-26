@@ -18,7 +18,6 @@ class PartialGrade extends GradeSet {
     public String[] getGradeNames() {
         return this.gradeNames;
     }
-
     public void setGradeNames(String[] gradeNames) {
         if (this.gradeNames.length == gradeNames.length){
             for (int i = 0; i < gradeNames.length; i++) {

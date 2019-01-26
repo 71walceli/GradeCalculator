@@ -26,8 +26,8 @@ public class YearlySchoolGrade extends GradeSet {
         long start = System.nanoTime();
 
         YearlySchoolGrade y = new YearlySchoolGrade(Integer.toString(Calendar.getInstance().get(Calendar.YEAR)),
-                new SemmesterGrade(null, new GradeSet(null, new Grade[]{new Grade(7.8f), new Grade(8.4f), new Grade(9.5f), new Grade(3f)})),
-                new SemmesterGrade(null, new GradeSet(null, new Grade[]{new Grade(10f), new Grade(7f), new Grade(5.75f), new Grade(4f)})));
+                new SemmesterGrade(null, new GradeSet(new Grade[]{new Grade(7.8f), new Grade(8.4f), new Grade(9.5f), new Grade(3f)})),
+                new SemmesterGrade(null, new GradeSet(new Grade[]{new Grade(10f), new Grade(7f), new Grade(5.75f), new Grade(4f)})));
         for (SemmesterGrade s : y.semmesters) {
             System.out.println(s.getName());
             for (Grade g : s.getGradeSet()) System.out.println(g.getName()+ "\t" +g.getGrade());
