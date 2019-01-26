@@ -1,4 +1,4 @@
-package pro.pk.a.javatest;
+package pro.pk.a.gradeUtils;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -20,8 +20,8 @@ class PartialGrade extends GradeSet {
     }
     public void setGradeNames(String[] gradeNames) {
         if (this.gradeNames.length == gradeNames.length){
-            for (int i = 0; i < gradeNames.length; i++) {
-                if (!StringUtils.isEmpty(gradeNames[i])) this.gradeNames[i] = gradeNames[i];
+            for (int index = 0; index < gradeNames.length; index++) {
+                if (!StringUtils.isEmpty(gradeNames[index])) this.gradeNames[index] = gradeNames[index];
             }
         }
         else throw new IllegalArgumentException("Argument array must be same size as that which will be set. " + this.gradeNames.length + " != " + gradeNames.length);

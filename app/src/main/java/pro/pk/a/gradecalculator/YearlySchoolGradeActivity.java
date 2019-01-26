@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class YearlySchoolGradeActivity extends AppCompatActivity {
     private TextView Q1P1;
     private TextView Q1P2;
     private TextView Q1P3;

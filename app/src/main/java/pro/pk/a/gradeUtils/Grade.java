@@ -1,4 +1,4 @@
-package pro.pk.a.javatest;
+package pro.pk.a.gradeUtils;
 
 public class Grade {
     private float grade;
@@ -14,9 +14,9 @@ public class Grade {
         this.name = name;
         this.setGrade(grade);
     }
-    static Grade[] massGrades(float[] grades) {
+    static Grade[] makeGrades(float[] grades) {
         Grade[] newGrades = new Grade[grades.length];
-        for (int i = 0; i < grades.length; i++) newGrades[i] = new Grade(grades[i]);
+        for (int index = 0; index < grades.length; index++) newGrades[index] = new Grade(grades[index]);
         return newGrades;
     }
 

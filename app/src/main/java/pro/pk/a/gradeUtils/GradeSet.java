@@ -1,4 +1,4 @@
-package pro.pk.a.javatest;
+package pro.pk.a.gradeUtils;
 
 import java.util.Arrays;
 
@@ -13,13 +13,13 @@ public class GradeSet extends Grade {
         this(null, grades);
     }
     GradeSet(String name, float[] grades) {
-        this(name, massGrades(grades));
+        this(name, makeGrades(grades));
     }
     GradeSet(String name, Grade[] grades) {
         super(name, -1);
         this.gradeSet = new Grade[grades.length];
-        for (int i = 0; i < grades.length; i++) {
-            gradeSet[i] = grades[i];
+        for (int index = 0; index < grades.length; index++) {
+            gradeSet[index] = grades[index];
         }
         this.setAverage();
     }
@@ -30,9 +30,9 @@ public class GradeSet extends Grade {
     public void setGradeSet(float[] grades) {
         if (this.gradeSet.length == grades.length) {
             Grade[] gradeSet = new Grade[this.gradeSet.length];
-            for (int i = 0; i < gradeSet.length; i++) {
-                gradeSet[i].setGrade(grades[i]);
-                gradeSet[i].setName(this.gradeSet[i].getName());
+            for (int index = 0; index < gradeSet.length; index++) {
+                gradeSet[index].setGrade(grades[index]);
+                gradeSet[index].setName(this.gradeSet[index].getName());
             }
         } else throw new IllegalArgumentException("Array argument must contain the sema number of grades.");
         this.setGradeSet(gradeSet);
@@ -49,8 +49,8 @@ public class GradeSet extends Grade {
     }
     public GradeSet makeAverageSet(GradeSet[] gradeSets) {
         Grade[] averages = new Grade[gradeSets.length];
-        for (int i = 0; i < gradeSets.length; i++) {
-            averages[i] = new Grade(gradeSets[i].getAverage().getGrade());
+        for (int index = 0; index < gradeSets.length; index++) {
+            averages[index] = new Grade(gradeSets[index].getAverage().getGrade());
         }
         return new GradeSet(null,averages);
     }
