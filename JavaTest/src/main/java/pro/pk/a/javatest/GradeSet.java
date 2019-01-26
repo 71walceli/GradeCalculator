@@ -9,6 +9,9 @@ public class GradeSet extends Grade {
     GradeSet(float[] grades) {
         this(null, grades);
     }
+    public GradeSet(Grade[] grades) {
+        this(null, grades);
+    }
     GradeSet(String name, float[] grades) {
         this(name, massGrades(grades));
     }
@@ -25,7 +28,7 @@ public class GradeSet extends Grade {
         return gradeSet;
     }
     public void setGradeSet(float[] grades) {
-        if (this.gradeSet.length <= grades.length) {
+        if (this.gradeSet.length == grades.length) {
             Grade[] gradeSet = new Grade[this.gradeSet.length];
             for (int i = 0; i < gradeSet.length; i++) {
                 gradeSet[i].setGrade(grades[i]);
@@ -39,6 +42,17 @@ public class GradeSet extends Grade {
             this.gradeSet = Arrays.copyOf(grades, grades.length);
         } else throw new IllegalArgumentException("Array argument must contain the sema number of grades.");
         this.setAverage();
+    }
+
+    public GradeSet makeAverageSet(SemmesterGrade[] semmesterGrades) {
+        return this.makeAverageSet((GradeSet[]) semmesterGrades);
+    }
+    public GradeSet makeAverageSet(GradeSet[] gradeSets) {
+        Grade[] averages = new Grade[gradeSets.length];
+        for (int i = 0; i < gradeSets.length; i++) {
+            averages[i] = new Grade(gradeSets[i].getAverage().getGrade());
+        }
+        return new GradeSet(null,averages);
     }
 
     public Grade getAverage() {
