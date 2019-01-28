@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".YearlySchoolGradeActivity">
+    tools:context=".SchoolYearAvgActivity">
 
     <EditText
         android:id="@+id/Q1P1"
@@ -201,8 +201,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Result">
+        app:layout_constraintTop_toBottomOf="@+id/info">
 
         <TextView
             android:id="@+id/ShowErr"
@@ -218,5 +219,17 @@
             app:layout_constraintTop_toTopOf="@+id/scrollView2"
             tools:layout_editor_absoluteX="148dp" />
     </ScrollView>
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Result" />
 
 </android.support.constraint.ConstraintLayout>

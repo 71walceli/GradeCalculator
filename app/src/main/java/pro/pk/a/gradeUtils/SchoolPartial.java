@@ -2,16 +2,16 @@ package pro.pk.a.gradeUtils;
 
 import org.apache.commons.lang3.StringUtils;
 
-class PartialGrade extends GradeSet {
+class SchoolPartial extends GradeSet {
     private String[] gradeNames = new String[]{null, null, null, null, "partialTest"};
 
-    PartialGrade(String name, float[] grades) {
+    SchoolPartial(String name, float[] grades) {
         this(name, new Grade[]{new Grade(grades[0]), new Grade(grades[1]), new Grade(grades[2]), new Grade(grades[3]), new Grade(grades[4])});;
     }
-    PartialGrade(Grade[] grades) {
+    SchoolPartial(Grade[] grades) {
         this(null,grades);
     }
-    PartialGrade(String name, Grade[] grades) {
+    SchoolPartial(String name, Grade[] grades) {
         super(name, new Grade[]{grades[0], grades[1], grades[2], grades[3], grades[4]});
     }
 

@@ -14,7 +14,12 @@ public class Grade {
         this.name = name;
         this.setGrade(grade);
     }
-    static Grade[] makeGrades(float[] grades) {
+    public static Grade[] makeGrades(int grades) {
+        Grade[] newGrades = new Grade[grades];
+        for (int index = 0; index < newGrades.length; index++) newGrades[index] = new Grade(-1);
+        return newGrades;
+    }
+    public static Grade[] makeGrades(float[] grades) {
         Grade[] newGrades = new Grade[grades.length];
         for (int index = 0; index < grades.length; index++) newGrades[index] = new Grade(grades[index]);
         return newGrades;
@@ -25,12 +30,11 @@ public class Grade {
     }
 
     public void setGrade(float grade) {
-        if (grade >= 1 && grade <= 10) {
+        if (isGrade(grade)) {
             this.grade = grade;
         } else if (grade == -1) {
             this.grade = 0;
         } else {
-            this.grade = 0;
             throw new IllegalArgumentException("Valid grade must be between 1 and 10. Passed value: " + grade);
         }
     }
@@ -41,5 +45,14 @@ public class Grade {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(this.getGrade());
+    }
+
+    public static boolean isGrade (float grade) {
+        return grade >= 1 && grade <= 10;
     }
 }

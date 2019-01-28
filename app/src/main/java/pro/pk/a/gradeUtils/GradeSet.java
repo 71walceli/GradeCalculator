@@ -6,7 +6,7 @@ public class GradeSet extends Grade {
     protected Grade[] gradeSet;
     private final Grade average = new Grade("average", -1);
 
-    GradeSet(float[] grades) {
+    public GradeSet(float[] grades) {
         this(null, grades);
     }
     public GradeSet(Grade[] grades) {
@@ -15,6 +15,7 @@ public class GradeSet extends Grade {
     GradeSet(String name, float[] grades) {
         this(name, makeGrades(grades));
     }
+
     GradeSet(String name, Grade[] grades) {
         super(name, -1);
         this.gradeSet = new Grade[grades.length];
@@ -44,8 +45,8 @@ public class GradeSet extends Grade {
         this.setAverage();
     }
 
-    public GradeSet makeAverageSet(SemmesterGrade[] semmesterGrades) {
-        return this.makeAverageSet((GradeSet[]) semmesterGrades);
+    public GradeSet makeAverageSet(SchoolSemester[] schoolSemesters) {
+        return this.makeAverageSet((GradeSet[]) schoolSemesters);
     }
     public GradeSet makeAverageSet(GradeSet[] gradeSets) {
         Grade[] averages = new Grade[gradeSets.length];

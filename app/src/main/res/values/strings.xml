@@ -10,6 +10,5 @@
     <string name="ex2">Ex. 2</string>
     <string name="ShowErr">Input errors will show here</string>
     <string name="getAnnualGrade">Grade</string>
-    <string name="NotValidGrade">%1$s is not a valid grade.</string>
-    <string name="NotValidGrades">%1$s are not valid grades.</string>
+    <string name="NotValidGrades">Make sure of filling in all fields.</string>
 </resources>
